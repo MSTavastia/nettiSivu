@@ -1,18 +1,25 @@
 'use strict';
+// Navilinkit pysyvät koko ajan näkyvissä nykyisessä ikkunassa
 const naviLinkit = document.querySelector('.nav');
+// Modal on pop- up ikkuna joka tulee nykyisen ikkunan päälle
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
+// Sulkee ja avaa pop up ikkunan
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+// Vieritä nappi, menee tiettyyn kohtaan
 const nappiVieritä = document.querySelector('.btn--scroll-to');
+// verrkkosivujen osat. Nämä tulevat järjestäen  headerin jälkeen.
 const sektio1 = document.querySelector('#section--1');
 const sektio2 = document.querySelector('#section--2');
 const sektio3 = document.querySelector('#section--3');
+// Välilehti osio joihin kuuluu sektio2 pikkuvälilehdet ja tekstit
 const valilehdet = document.querySelectorAll('.operations__tab');
 const valilehtiSailo = document.querySelector('.operations__tab-container');
 const valilehtiSisalto = document.querySelectorAll('.operations__content');
+// Pop-up ikkunan funktio. Tämä on määritetty alussa piiloon sekä
 const openModal = function (e) {
-  e.preventDefault();
+  // e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
