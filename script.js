@@ -9,7 +9,7 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 // Vieritä nappi, menee tiettyyn kohtaan
 const nappiVieritä = document.querySelector('.btn--scroll-to');
-// verrkkosivujen osat. Nämä tulevat järjestäen  headerin jälkeen.
+// verrkkosivujen osat. Nämä tulevat järjestäen  headerin jälkeen
 const sektio1 = document.querySelector('#section--1');
 const sektio2 = document.querySelector('#section--2');
 const sektio3 = document.querySelector('#section--3');
@@ -17,12 +17,13 @@ const sektio3 = document.querySelector('#section--3');
 const valilehdet = document.querySelectorAll('.operations__tab');
 const valilehtiSailo = document.querySelector('.operations__tab-container');
 const valilehtiSisalto = document.querySelectorAll('.operations__content');
-// Pop-up ikkunan funktio. Tämä on määritetty alussa piiloon sekä
+// Pop-up ikkunan funktio avaamiseen. Tämä on määritetty alussa piiloon
 const openModal = function (e) {
-  // e.preventDefault();
+  e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
+// Pop-up ikkunan funktio sulkemiseen
 const closeModal = function () {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
@@ -49,8 +50,11 @@ valilehtiSailo.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${klikki.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+// Vieritä nappi. Tämä mahdollistaa ikkunan vierityksen tiettyyn kohtaan
 nappiVieritä.addEventListener('click', function (e) {
+  // Ottaa koordinaatit. X = vasemmalta, Y = ylhäältä, width = leveys
   const koordinaatitS1 = sektio1.getBoundingClientRect();
+  // Vierittää ikkunan kyseiseen kohtaan: sektio1. Smooth = hidannukset alussa ja lopussa
   sektio1.scrollIntoView({
     behavior: 'smooth',
   });
