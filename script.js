@@ -19,16 +19,19 @@ const valilehtiSailo = document.querySelector('.operations__tab-container');
 const valilehtiSisalto = document.querySelectorAll('.operations__content');
 // Pop-up ikkunan funktio avaamiseen. Tämä on määritetty alussa piiloon
 const openModal = function (e) {
+  // Estää ikkunan siirtymisen
   e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
-// Pop-up ikkunan funktio sulkemiseen
+// Pop-up ikkunan funktio piilottamiseen
 const closeModal = function () {
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 };
+// Pop-up ikkunan avaus
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
+// Pop-up ikkunan sulku
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 document.addEventListener('keydown', function (e) {
@@ -62,11 +65,13 @@ nappiVieritä.addEventListener('click', function (e) {
 });
 // Valitsee koko navilinkit alueen '.nav__links'
 document.querySelector('.nav__links').addEventListener('click', function (e) {
+  // Estää ikkunan siirtymisen
   e.preventDefault();
   // Valitsee yksittäisen navilinkin 'nav__link'
   if (e.target.classList.contains('nav__link')) {
+    // Hakee href index.html tiedostosta
     const id = e.target.getAttribute('href');
-    // Vierittää ikkunan kyseisen osion kohdalle. Smooth = hidannukset alussa ja lopussa
+    // Vierittää ikkunan kyseisen osion kohdalle haettuaan href. Smooth = hidannukset alussa ja lopussa
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
@@ -102,9 +107,11 @@ const tarkennus = function (e) {
 // Tarkkailee onko hiiri kohteen päällä vai ulkona
 naviLinkit.addEventListener('mouseover', tarkennus.bind(0.5));
 naviLinkit.addEventListener('mouseout', tarkennus.bind(1));
-
+// Valitsee headerin
 const headeri = document.querySelector('.header');
+// Ottaa ikkunan koordinaatit
 const naviKorkeus = naviLinkit.getBoundingClientRect().height;
+// Funktio navilinkin kiinnittämiseen ylös
 const stickyNavi = function (entries) {
   const [paasy] = entries;
 
