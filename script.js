@@ -33,6 +33,7 @@ const closeModal = function () {
 btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
 // Pop-up ikkunan sulku
 btnCloseModal.addEventListener('click', closeModal);
+// Klikkauksella sulkee Pop-Upin
 overlay.addEventListener('click', closeModal);
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
