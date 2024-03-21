@@ -105,20 +105,21 @@ const stickyNavi = function (entries) {
   if (!paasy.isIntersecting) naviLinkit.classList.add('sticky');
   else naviLinkit.classList.remove('sticky');
 };
+
+// Navin näkyminen kun korkeus on ikkunan ulkopuolella
 const headeriObs = new IntersectionObserver(stickyNavi, {
   root: null,
   threshold: 0,
   rootMargin: `-${naviKorkeus}px`,
 });
 headeriObs.observe(headeri);
-
+// kaikkien sektioden valinta
 const sektioAll = document.querySelectorAll('.section');
-
+// Näyttää sektion
 const paljastaSektio = function (entries, observer) {
   const [paasy] = entries;
-
   if (!paasy.isIntersecting) return;
-
+  // Antaa pääsyn piilotettuun sektioon
   paasy.target.classList.remove('section--hidden');
   observer.unobserve(paasy.target);
 };
@@ -130,12 +131,12 @@ const sektioObs = new IntersectionObserver(paljastaSektio, {
 sektioAll.forEach(function (sektio) {
   sektioObs.observe(sektio);
 });
-
+// Kuvan valitsin
 const imgValitsin = document.querySelectorAll('img[data-src]');
-
+// Funktio kuvan lataamiselle
 const imgLataa = function (entries, observer) {
   const [paasy] = entries;
-
+  // Käyttää lazy kuvaa alussa. Lazyn poiston jälkeen näyttää suurempi res kuvan
   if (!paasy.isIntersecting) return;
   paasy.target.src = paasy.target.dataset.src;
   paasy.target.addEventListener('load', function () {
