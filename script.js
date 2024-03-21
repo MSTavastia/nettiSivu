@@ -40,6 +40,7 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+// Välilehtien kuuntelu. Määrittää aktiivisen välilehden
 valilehtiSailo.addEventListener('click', function (e) {
   const klikki = e.target.closest('.operations__tab');
   if (!klikki) return;
@@ -75,21 +76,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     // Vierittää ikkunan kyseisen osion kohdalle haettuaan href. Smooth = hidannukset alussa ja lopussa
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
-});
-
-valilehtiSailo.addEventListener('click', function (e) {
-  const klikki = e.target.closest('.operations__tab');
-  if (!klikki) return;
-  valilehdet.forEach(lehti =>
-    lehti.classList.remove('operations__tab--active')
-  );
-  valilehtiSisalto.forEach(sisalto =>
-    sisalto.classList.remove('operations__content--active')
-  );
-  klikki.classList.add('operations__tab--active');
-  document
-    .querySelector(`.operations__content--${klikki.dataset.tab}`)
-    .classList.add('operations__content--active');
 });
 
 const tarkennus = function (e) {
